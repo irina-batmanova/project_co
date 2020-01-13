@@ -1,0 +1,5 @@
+.idea
+env/
+codex_back/db.sqlite3
+codex_back/Game/migrations/
+codex_front/node_modules/
