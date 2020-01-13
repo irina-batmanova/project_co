@@ -2,4 +2,4 @@
 env/
 codex_back/db.sqlite3
 codex_back/Game/migrations/
-codex_front/node_modules/
+codex_front_other/node_modules/
