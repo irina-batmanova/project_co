@@ -1,7 +1,8 @@
 import {FETCH_GAMES_ERROR, FETCH_GAMES_PENDING, FETCH_GAMES_SUCCESS}
  from '../actions'
 
-const initialState = {error: false, games: [], pending: false}
+const initialState = {error: undefined,
+games: []}
 
 export function gamesReducer(state=initialState, action) {
     switch(action.type) {

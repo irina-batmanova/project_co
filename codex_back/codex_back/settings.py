@@ -63,6 +63,18 @@ INSTALLED_APPS = [
 CORS_ORIGIN_ALLOW_ALL = True
 ALLOWED_HOSTS = ['*']
 
+REST_FRAMEWORK = {
+    'DEFAULT_PERMISSION_CLASSES': (
+        'rest_framework.permissions.AllowAny',
+    ),
+    'DEFAULT_AUTHENTICATION_CLASSES': (
+        'rest_framework_jwt.authentication.JSONWebTokenAuthentication',
+        'rest_framework.authentication.SessionAuthentication',
+        'rest_framework.authentication.BasicAuthentication',
+    ),
+}
+
+
 MIDDLEWARE = [
     'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
@@ -111,18 +123,18 @@ DATABASES = {
 # https://docs.djangoproject.com/en/3.0/ref/settings/#auth-password-validators
 
 AUTH_PASSWORD_VALIDATORS = [
-    {
-        'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
-    },
+   # {
+   #     'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
+   # },
+   # {
+   #     'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',
+   # },
+   # {
+   #     'NAME': 'django.contrib.auth.password_validation.CommonPasswordValidator',
+   # },
+   # {
+   #     'NAME': 'django.contrib.auth.password_validation.NumericPasswordValidator',
+   # },
 ]
 
 

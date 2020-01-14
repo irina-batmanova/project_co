@@ -7,17 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
 import { Provider } from 'react-redux'
-import { createStore, applyMiddleware } from 'redux'
-import reducer from './reducer'
-import thunk from "redux-thunk";
-
-const initialState = {
-  // error: null,
-  // pending: false,
-  games: []
-}
-const store = createStore(reducer, initialState, applyMiddleware(thunk))
-
+import store from './store'
 
 ReactDOM.render(
   <div className="app_component">
