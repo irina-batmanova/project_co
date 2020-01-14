@@ -1,21 +1,33 @@
 import React from 'react';
+import authUser from '../fetchApi/authApi';
+import { connect } from 'react-redux';
+import { bindActionCreators } from 'redux';
 
 
 class LoginForm extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {value: ''};
-
+    this.state = {login: '', password: ''};
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
   }
 
+
   handleChange(event) {
-    this.setState({value: event.target.value});
+    console.log("handling change");
+    const value = event.target.value;
+    console.log(value);
+    console.log(this.state);
+    console.log(event.target.name);
+    this.setState({
+      ...this.state,
+      [event.target.name]: value
+    });
   }
 
   handleSubmit(event) {
-    alert('A name was submitted: ' + this.state.value);
+    this.props.loginUser();
+    console.log(this.props);
     event.preventDefault();
   }
 
@@ -23,8 +35,13 @@ class LoginForm extends React.Component {
     return (
       <form onSubmit={this.handleSubmit}>
         <label>
-          Name:
-          <input type="text" value={this.state.value} onChange={this.handleChange} />
+          Email:
+          <input type="text" value={this.state.login} onChange={this.handleChange} />
+        </label>
+        <label>
+          Password:
+          <input type="text" value={this.state.password}
+          onChange={this.handleChange} />
         </label>
         <input type="submit" value="Submit" />
       </form>
@@ -32,4 +49,15 @@ class LoginForm extends React.Component {
   }
 }
 
-export default LoginForm;
+const mapStateToProps = state => ({
+  user: state.user
+})
+
+const mapDispatchToProps = dispatch => bindActionCreators({
+    loginUser: authUser
+}, dispatch)
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(LoginForm );
