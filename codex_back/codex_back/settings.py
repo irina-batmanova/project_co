@@ -26,10 +26,6 @@ SECRET_KEY = '#3cjf5iccz8vg3z)-hesxd$!q$ry-372a*vtrqzvx6a*0c$^@d'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
-INSTALLED_APPS = (
-    ##...
-    'corsheaders'
-)
 
 CORS_ORIGIN_ALLOW_ALL = True
 ALLOWED_HOSTS = ['*']
