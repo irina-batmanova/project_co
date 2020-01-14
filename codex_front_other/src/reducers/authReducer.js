@@ -1,30 +1,29 @@
-import {FETCH_GAMES_ERROR, FETCH_GAMES_PENDING, FETCH_GAMES_SUCCESS}
- from '../actions'
+import {LOGIN_ERROR, LOGIN_SUCCESS} from '../actions'
 
-const initialState = {error: false, games: [], pending: false}
+const initialState = {
+  error: undefined,
+  user: undefined
+}
 
-export function gamesReducer(state=initialState, action) {
+export function authReducer(state=initialState, action) {
     switch(action.type) {
-        case FETCH_GAMES_PENDING:
-            return {
-                ...state,
-                pending: true
-            }
-        case FETCH_GAMES_SUCCESS:
-            return {
-                ...state,
-                pending: false,
-                games: action.games
-            }
-        case FETCH_GAMES_ERROR:
+        case LOGIN_ERROR:
+        console.log("login error ", action.error);
             return {
                 ...state,
                 pending: false,
                 error: action.error
+            }
+        case LOGIN_SUCCESS:
+            console.log("login success ", action.user);
+            return {
+                ...state,
+                pending: false,
+                user: action.user
             }
         default:
             return state;
     }
 }
 
-export default gamesReducer;
+export default authReducer;
