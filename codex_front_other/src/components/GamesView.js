@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import fetchGames from '../fetchGames';
+import fetchGames from '../fetchApi/fetchGames';
 import {getGamesError, getGames, getGamesPending} from '../reducer';
 // import fetchGames from '../fetchGames';
 //import LoadingSpinner from './SomeLoadingSpinner';
@@ -17,7 +17,7 @@ class GamesView extends Component {
     }
 
     componentWillMount() {
-        
+
         // const {fetchGames} = this.props;
         // console.log("my props", this.props, fetchGames);
         // let res = fetchGames();
@@ -26,7 +26,7 @@ class GamesView extends Component {
         this.props.fetchGames();
         console.log(this.props);
     }
-    
+
     shouldComponentRender() {
         const {games, error, pending} = this.props;
         console.log("AHAHAH", games);
@@ -35,12 +35,6 @@ class GamesView extends Component {
         }
         return false;
     }
-
-    // componentDidMount() {
-    //   //prevent default;
-    //   this.props.fetchGames();
-    //   // this.setState({games: this.fetchGames()});
-    // }
 
     render() {
         const {games, error, pending} = this.props;

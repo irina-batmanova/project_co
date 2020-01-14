@@ -6,7 +6,26 @@ import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/css/bootstrap.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
+import { Provider } from 'react-redux'
+import { createStore, applyMiddleware } from 'redux'
+import reducer from './reducer'
+import thunk from "redux-thunk";
+
+const initialState = {
+  // error: null,
+  // pending: false,
+  games: []
+}
+const store = createStore(reducer, initialState, applyMiddleware(thunk))
+
+
+ReactDOM.render(
+  <div className="app_component">
+      <Provider store={store}>
+        <App />
+      </Provider >
+  </div>
+  , document.getElementById('root'));
 
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.

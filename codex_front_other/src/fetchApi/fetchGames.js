@@ -1,7 +1,5 @@
-import {fetchGamesSuccess,
-  fetchGamesPending, fetchGamesError} from './actions';
 import axios from 'axios';
-import {FETCH_GAMES_SUCCESS} from './actions';
+import {FETCH_GAMES_SUCCESS} from '../actions';
 
 function fetchGames() {
   const req = axios.get("http://127.0.0.1:8000/games/");

@@ -7,37 +7,31 @@ import UserHeader from './UserHeader';
 // import GameInfo from './GameInfo';
 import {Navbar, NavbarBrand, Container, Col, Row} from 'react-bootstrap';
 import GamesView from './GamesView';
-import { Provider } from 'react-redux'
-import { createStore, applyMiddleware } from 'redux'
-import reducer from '../reducer'
-import thunk from "redux-thunk";
-const initialState = {
-  // error: null,
-  // pending: false,
-  games: []
-}
-const store = createStore(reducer, initialState, applyMiddleware(thunk))
+
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link
+} from "react-router-dom";
+import Home from './Home';
+import LoginForm from './Auth';
+
 
 function App() {
   return (
-    // <Fragment>
-    // <Navbar color="light" light expand="md">
-    //     <NavbarBrand href="/">reactstrap</NavbarBrand>
-    //   </Navbar>
-    <Provider store={store}>
-    <div className="app_component">
-    <Container fluid={true}>
-      <Row>
-        <Col><UserHeader /></Col>
-      </Row>
-      <Row>
-        <Col><GamesView/></Col>
-
-      </Row>
-    </Container>
-    </div>
-    </Provider>
-    // </Fragment>
+        <Router>
+        <div>
+        <nav>
+          <Link to="/">Home</Link >
+          <Link to='login/'>Login</Link >
+        </nav>
+        </div>
+        <Switch>
+          <Route path='/login/'> <LoginForm /> </Route >
+          <Route path='/'><Home /> </Route >
+        </Switch>
+        </Router>
   );
 }
 
