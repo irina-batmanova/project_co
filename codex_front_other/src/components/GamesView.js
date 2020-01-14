@@ -11,6 +11,11 @@ import GamesList from './GamesList';
 
 class GamesView extends Component {
 
+    constructor(props) {
+        super(props);
+        this.shouldComponentRender = this.shouldComponentRender.bind(this);
+    }
+
     componentWillMount() {
         
         // const {fetchGames} = this.props;
@@ -21,13 +26,15 @@ class GamesView extends Component {
         this.props.fetchGames();
         console.log(this.props);
     }
-    //
-    // shouldComponentRender() {
-    //     // const {pending} = this.props;
-    //     // if(this.pending === false) return false;
-    //     // more tests
-    //     return true;
-    // }
+    
+    shouldComponentRender() {
+        const {games, error, pending} = this.props;
+        console.log("AHAHAH", games);
+        if(games.length !== 0) {
+            return true;
+        }
+        return false;
+    }
 
     // componentDidMount() {
     //   //prevent default;
@@ -38,13 +45,17 @@ class GamesView extends Component {
     render() {
         const {games, error, pending} = this.props;
         console.log("trying to render games list");
+        console.log(typeof games);
+        console.log(games);
         // console.log(this.state.games);
 
-      //  if(!this.shouldComponentRender()) return <LoadingSpinner />
-
+        if(!this.shouldComponentRender()) {
+            console.log("HE-HE");
+            return <div></div>;
+        }
         return (
             <div className='product-list-wrapper'>
-                <GamesList games={games} />
+                <GamesList games={games.games} />
             </div>
         )
     }
