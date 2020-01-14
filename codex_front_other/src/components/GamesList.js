@@ -1,10 +1,12 @@
 import React from 'react';
+import {Button} from 'react-bootstrap';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col'
 
 class GamesList extends React.Component {
   constructor(props) {
       super(props);
       this.state = {games: props.games}
-      console.log("XUY")
       console.log(props.games)
   }
 
@@ -12,15 +14,19 @@ class GamesList extends React.Component {
     console.log("gameSSSSSS");
     console.log(this.state.games);
     console.log(typeof this.state.games);
-    const listItems = this.state.games.map((game, index) =>
-      <React.Fragment key={index}>
-          <li>{game.name}</li>
-      </React.Fragment>
+    const lobbyItems = this.state.games.map((game, index) =>
+        <Row>
+          <Button variant="outline-primary" key={index} xs lg="2"
+            // onClick={
+            // () => this.jumpTo(move)
+            // }
+            >{game.name}</Button>
+        </Row>
     );
     return (
       <div>
         <ul>
-          {listItems}
+          {lobbyItems}
         </ul>
       </div>
   );

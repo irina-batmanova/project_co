@@ -37,10 +37,10 @@ class GamesView extends Component {
     }
 
     render() {
-        const {games, error, pending} = this.props;
+        const {propps} = this.props;
         console.log("trying to render games list");
-        console.log(typeof games);
-        console.log(games);
+        console.log(typeof propps);
+        console.log(propps);
         // console.log(this.state.games);
 
         if(!this.shouldComponentRender()) {
@@ -48,9 +48,18 @@ class GamesView extends Component {
             return <div></div>;
         }
         return (
-            <div className='product-list-wrapper'>
-                <GamesList games={games.games} />
-            </div>
+            <Container>
+                <Row>
+                    <div className='product-list-wrapper'>
+                        <GamesList games={propps.games} />
+                    </div>
+                </Row>
+                <Row>
+                    <div className='game-info-wrapper'>
+                        <GameInfo game_info={propps.game_info} />
+                    </div>
+                </Row>
+            </Container>
         )
     }
 }

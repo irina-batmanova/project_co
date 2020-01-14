@@ -14,7 +14,8 @@ import thunk from "redux-thunk";
 const initialState = {
   // error: null,
   // pending: false,
-  games: []
+  games: [],
+  game_id: null
 }
 const store = createStore(reducer, initialState, applyMiddleware(thunk))
 
