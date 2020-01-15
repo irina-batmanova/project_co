@@ -2,9 +2,11 @@ import React from 'react';
 
 class Turn extends React.Component {
   render() {
-    const turn = this.props.turn;
-    console.log(turn);
-    if (!turn) {
+    console.log("trying to render lobby 3");
+
+    const turns = this.props.turns;
+    console.log('Пытаемся отрендерить turn', turns);
+    if (!turns) {
       return (
         <div>
           "ВЫБЕРИ ИГРУ ЧТОБЫ ПОСМОТРЕТЬ ЕЕ ИНФУ"

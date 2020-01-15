@@ -30,7 +30,7 @@ class GamesView extends Component {
     }
 
     shouldComponentRender() {
-        const {games, gameinfo} = this.props;
+        const {games} = this.props;
         console.log("AHAHAH", games);
         if(games.length !== 0) {
             return true;
@@ -39,8 +39,9 @@ class GamesView extends Component {
     }
 
     render() {
-        const {games, game_id, turn_id} = this.props;
-        console.log("trying to render games list");
+        console.log("trying to render lobby 1");
+        const {games, turns} = this.props;
+        console.log("trying to render lobby");
         console.log(games);
 
         if(!this.shouldComponentRender()) {
@@ -57,7 +58,7 @@ class GamesView extends Component {
                     </Col>
                     <Col>
                         <div className='game-info-wrapper'>
-                            <Turn turn={game_id, turn_id} />
+                            <Turn turns={turns} />
                         </div>
                     </Col>
                 </Row>
@@ -70,7 +71,7 @@ class GamesView extends Component {
 const mapStateToProps = state => ({
     // error: getGamesError(state),
     games: state.games.games,
-    gameinfo: state.games.gameinfo,
+    turns: state.turns,
     // pending: getGamesPending(state)
 })
 

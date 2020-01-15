@@ -12,4 +12,5 @@ function fetchGames() {
   }
 }
 
+
 export default fetchGames;

@@ -12,3 +12,9 @@ class GamesViewSet(viewsets.ModelViewSet):
 class TurnsViewSet(viewsets.ModelViewSet):
     queryset = Turn.objects.all()
     serializer_class = TurnSerializer
+
+class SingleGameTurnsViewSet(viewsets.ModelViewSet):
+    queryset = Turn.objects.all()
+    serializer_class = TurnSerializer
+    def get_queryset(self):
+        return Turn.objects.filter(gameid=int(self.kwargs['turns_pk'])).all()

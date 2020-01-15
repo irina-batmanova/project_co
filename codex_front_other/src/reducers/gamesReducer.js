@@ -6,7 +6,7 @@ import {FETCH_GAMES_ERROR, FETCH_GAMES_PENDING, FETCH_GAMES_SUCCESS}
 
 const initialState = {error: undefined,
 games: [],
-turn: [],
+turns: [],
 }
 
 export function gamesReducer(state=initialState, action) {
@@ -37,7 +37,7 @@ export function gamesReducer(state=initialState, action) {
             return {
                 ...state,
                 pending: false,
-                turn: action.turn
+                turns: action.turns
             }
         case FETCH_TURN_ERROR:
             return {

@@ -8,6 +8,8 @@ import { bindActionCreators } from 'redux';
 class Home extends React.Component {
 
   render() {
+    console.log("trying to render lobby 5");
+
     console.log("home props are ", this.props);
     if (this.props.user !== undefined) {
       console.log("i have a user ", this.props.user)

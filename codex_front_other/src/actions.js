@@ -34,10 +34,10 @@ function fetchTurnPending() {
     }
 }
 
-function fetchTurnSuccess(turn) {
+function fetchTurnSuccess(turns) {
     return {
         type: FETCH_TURN_SUCCESS,
-        turn: turn
+        turns: turns
     }
 }
 

@@ -5,9 +5,9 @@ from Game.models import Game, Turn
 class GameSerializer(serializers.ModelSerializer):
     class Meta:
         model = Game
-        fields = ['name', 'game_id']
+        fields = ['name', 'gameid']
 
 class TurnSerializer(serializers.ModelSerializer):
     class Meta:
         model = Turn
-        fields = ['game_id', 'turn_number', 'turn_text']
+        fields = ['gameid', 'turn_number', 'turn_text']

@@ -32,6 +32,8 @@ class LoginForm extends React.Component {
   }
 
   render() {
+    console.log("trying to render lobby 4");
+  
     const {user, error} = this.props;
     if (user !== undefined) {
       return (<div>You're a user {user}</div>)

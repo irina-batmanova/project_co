@@ -16,17 +16,18 @@ class GamesList extends React.Component {
   }
 
   render() {
+    console.log("trying to render lobby 2");
     console.log("gameSSSSSS");
     console.log(this.state.games);
     console.log(typeof this.state.games);
     const lobbyItems = this.state.games.map((game, index) =>
-        <Row key={index}>
+        <Row key={game.id}>
           <Button variant="outline-primary" lg="2"
               onClick={
-                // console.log("HUY");
                 () => {
                   this.state.turn_id = 1;
-                  this.props.fetchTurn(game.game_id);
+                  console.log("take an gameid", game.gameid);
+                  this.props.fetchTurn(game.gameid);
                 }
               }
             >{game.name}</Button>
@@ -45,7 +46,7 @@ class GamesList extends React.Component {
 const mapStateToProps = state => ({
   // error: getGamesError(state),
   games: state.games.games,
-  turn: state.turn,
+  turns: state.turns,
   // pending: getGamesPending(state)
 })
 

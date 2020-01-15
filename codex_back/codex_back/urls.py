@@ -15,18 +15,23 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from rest_framework import routers
+from rest_framework_nested import routers
 from rest_framework_jwt.views import obtain_jwt_token
-from Game.views import GamesViewSet, TurnsViewSet
+from Game.views import GamesViewSet, TurnsViewSet, SingleGameTurnsViewSet
 
 router = routers.SimpleRouter()
 router.register('games', GamesViewSet)
 router.register('turns', TurnsViewSet)
+
+turns_router = routers.NestedSimpleRouter(router, r'turns', lookup='turns')
+turns_router.register(r'gameid', SingleGameTurnsViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', obtain_jwt_token),
 
 ]
+
 urlpatterns += router.urls
+urlpatterns += turns_router.urls
 
