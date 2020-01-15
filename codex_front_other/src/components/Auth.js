@@ -32,7 +32,7 @@ class LoginForm extends React.Component {
   }
 
   render() {
-    console.log("trying to render lobby 4");
+    console.log("trying to render auth");
   
     const {user, error} = this.props;
     if (user !== undefined) {
@@ -41,6 +41,8 @@ class LoginForm extends React.Component {
     console.log("our error is ", error);
     if (error !== undefined) {
       console.log("we have an error");
+      // this.setState({ error: undefined });
+      // this.setState({ user: undefined });
       return (<Alert>Wrong credentials</Alert>)
     }
     return (

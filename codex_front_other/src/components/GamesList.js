@@ -16,16 +16,14 @@ class GamesList extends React.Component {
   }
 
   render() {
-    console.log("trying to render lobby 2");
-    console.log("gameSSSSSS");
+    console.log("trying to render lobby");
     console.log(this.state.games);
-    console.log(typeof this.state.games);
     const lobbyItems = this.state.games.map((game, index) =>
         <Row key={game.id}>
           <Button variant="outline-primary" lg="2"
               onClick={
                 () => {
-                  this.state.turn_id = 1;
+                  this.setState({turn_number: 1});
                   console.log("take an gameid", game.gameid);
                   this.props.fetchTurn(game.gameid);
                 }
@@ -38,6 +36,22 @@ class GamesList extends React.Component {
         <ul>
           {lobbyItems}
         </ul>
+        <Row>
+        <Button variant="outline-primary" lg="2"
+              onClick={
+                () => {
+                  this.setState({turn_number: this.state.turn_number - 1});
+                }
+              }
+            >Предыдущий ход</Button>
+            <Button variant="outline-primary" lg="2"
+              onClick={
+                () => {
+                  this.setState({turn_number: this.state.turn_number + 1});
+                }
+              }
+            >Следующий ход</Button>
+        </Row>
       </div>
   );
 }
@@ -47,6 +61,7 @@ const mapStateToProps = state => ({
   // error: getGamesError(state),
   games: state.games.games,
   turns: state.turns,
+  turn_number: state.turn_number
   // pending: getGamesPending(state)
 })
 

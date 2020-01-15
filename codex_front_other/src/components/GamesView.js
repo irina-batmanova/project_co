@@ -19,12 +19,6 @@ class GamesView extends Component {
     }
 
     componentWillMount() {
-
-        // const {fetchGames} = this.props;
-        // console.log("my props", this.props, fetchGames);
-        // let res = fetchGames();
-        // console.log(res);
-        // console.log("after fetching games ", this.props)
         this.props.fetchGames();
         console.log(this.props);
     }
@@ -39,7 +33,7 @@ class GamesView extends Component {
     }
 
     render() {
-        console.log("trying to render lobby 1");
+        console.log("trying to render lobby+games");
         const {games, turns} = this.props;
         console.log("trying to render lobby");
         console.log(games);
@@ -71,7 +65,7 @@ class GamesView extends Component {
 const mapStateToProps = state => ({
     // error: getGamesError(state),
     games: state.games.games,
-    turns: state.turns,
+    turns: state.games.turns,
     // pending: getGamesPending(state)
 })
 
