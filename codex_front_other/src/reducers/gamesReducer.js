@@ -6,9 +6,7 @@ import {FETCH_GAMES_ERROR, FETCH_GAMES_PENDING, FETCH_GAMES_SUCCESS}
 
 const initialState = {error: undefined,
 games: [],
-gameid: null,
-turnnumber: null,
-turntext: "NO INFO",
+turn: [],
 }
 
 export function gamesReducer(state=initialState, action) {

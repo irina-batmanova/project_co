@@ -5,12 +5,11 @@ import { bindActionCreators } from 'redux';
 import { Container } from 'react-bootstrap';
 import fetchGames from '../fetchApi/fetchGames';
 import {getGamesError, getGames, getGamesPending} from '../reducer';
-import {fetchGameInfo} from '../fetchApi/fetchGames';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col'
 //import LoadingSpinner from './SomeLoadingSpinner';
 import GamesList from './GamesList';
-import GameInfo from'./GameInfo';
+import Turn from'./GameInfo';
 
 class GamesView extends Component {
 
@@ -40,7 +39,7 @@ class GamesView extends Component {
     }
 
     render() {
-        const {games, gameinfo} = this.props;
+        const {games, game_id, turn_id} = this.props;
         console.log("trying to render games list");
         console.log(games);
 
@@ -58,7 +57,7 @@ class GamesView extends Component {
                     </Col>
                     <Col>
                         <div className='game-info-wrapper'>
-                            <GameInfo gameinfo={gameinfo ? gameinfo : null} />
+                            <Turn turn={game_id, turn_id} />
                         </div>
                     </Col>
                 </Row>
