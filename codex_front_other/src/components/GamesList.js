@@ -15,11 +15,11 @@ class GamesList extends React.Component {
     console.log(this.state.games);
     console.log(typeof this.state.games);
     const lobbyItems = this.state.games.map((game, index) =>
-        <Row>
-          <Button variant="outline-primary" key={index} xs lg="2"
-            // onClick={
-            // () => this.jumpTo(move)
-            // }
+        <Row key={index}>
+          <Button variant="outline-primary" lg="2"
+              // onClick={
+              //   () => this.props.fetchGames(game.game_id);
+              // }
             >{game.name}</Button>
         </Row>
     );

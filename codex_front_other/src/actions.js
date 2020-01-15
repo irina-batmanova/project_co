@@ -1,9 +1,9 @@
 export const FETCH_GAMES_PENDING = 'FETCH_GAMES_PENDING';
 export const FETCH_GAMES_SUCCESS = 'FETCH_GAMES_SUCCESS';
 export const FETCH_GAMES_ERROR = 'FETCH_GAMES_ERROR';
-export const FETCH_GAMEINFO_PENDING = 'FETCH_GAMEINFO_PENDING';
-export const FETCH_GAMEINFO_SUCCESS = 'FETCH_GAMEINFO_SUCCESS';
-export const FETCH_GAMEINFO_ERROR = 'FETCH_GAMEINFO_ERROR'
+export const FETCH_TURN_PENDING = 'FETCH_TURN_PENDING';
+export const FETCH_TURN_SUCCESS = 'FETCH_TURN_SUCCESS';
+export const FETCH_TURN_ERROR = 'FETCH_TURN_ERROR'
 export const LOGIN_SUCCESS = 'LOGIN_SUCCESS';
 export const LOGIN_ERROR = 'LOGIN_ERROR';
 
@@ -28,22 +28,22 @@ function fetchGamesError(error) {
     }
 }
 
-function fetchGameInfoPending() {
+function fetchTurnPending() {
     return {
-        type: FETCH_GAMEINFO_PENDING
+        type: FETCH_TURN_PENDING
     }
 }
 
-function fetchameInfoSuccess(games) {
+function fetchTurnSuccess(turn) {
     return {
-        type: FETCH_GAMEINFO_SUCCESS,
-        gameinfo: gameinfo
+        type: FETCH_TURN_SUCCESS,
+        turn: turn
     }
 }
 
-function fetchameInfoError(error) {
+function fetchTurnError(error) {
     return {
-        type: FETCH_GAMEINFO_ERROR,
+        type: FETCH_TURN_ERROR,
         error: error
     }
 }
@@ -61,6 +61,6 @@ function loginError(error) {
     error: error
   };
 }
-export {fetchGamesError, fetchGamesPending, fetchGamesSuccess};
-// export fetchGamesPending
-// export fetchGamesSuccess
+export {
+    fetchGamesError, fetchGamesPending, fetchGamesSuccess,
+    fetchTurnError, fetchTurnPending, fetchTurnSuccess};

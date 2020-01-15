@@ -20,18 +20,31 @@ import LoginForm from './Auth';
 
 function App() {
   return (
-        <Router>
-        <div>
-        <nav>
-          <Link to="/">Home</Link >
-          <Link to='login/'>Login</Link >
+    <Router>
+      <header className="toolbar">
+        <nav className="toolbar__navigation">
+          <div></div>
+          <div className="toolbar__logo"><a href="/">The codex games archive</a></div>
+          <div className="spacer"></div>
+          <div className="toolbar_navigation-items">
+            <ul>
+              <li>
+                <Link to='/'>Home</Link >
+              </li>
+              <li>
+                <Link to='login/'>Login</Link >
+              </li>
+            </ul>
+          </div>  
         </nav>
-        </div>
+      </header>
+      <main style={{marginTop: '64px'}}>
         <Switch>
           <Route path='/login/'> <LoginForm /> </Route >
           <Route path='/'><Home /> </Route >
         </Switch>
-        </Router>
+      </main>
+    </Router>
   );
 }
 

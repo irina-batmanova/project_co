@@ -17,10 +17,11 @@ from django.contrib import admin
 from django.urls import path
 from rest_framework import routers
 from rest_framework_jwt.views import obtain_jwt_token
-from Game.views import GamesViewSet
+from Game.views import GamesViewSet, TurnsViewSet
 
 router = routers.SimpleRouter()
 router.register('games', GamesViewSet)
+router.register('turns', TurnsViewSet)
 
 urlpatterns = [
     path('admin/', admin.site.urls),

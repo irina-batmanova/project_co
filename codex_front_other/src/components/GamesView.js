@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-
+import { Container } from 'react-bootstrap';
 import fetchGames from '../fetchApi/fetchGames';
 import {getGamesError, getGames, getGamesPending} from '../reducer';
-// import fetchGames from '../fetchGames';
+import {fetchGameInfo} from '../fetchApi/fetchGames';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col'
 //import LoadingSpinner from './SomeLoadingSpinner';
 import GamesList from './GamesList';
+import GameInfo from'./GameInfo';
 
 class GamesView extends Component {
 
@@ -28,7 +31,7 @@ class GamesView extends Component {
     }
 
     shouldComponentRender() {
-        const {games, error, pending} = this.props;
+        const {games, gameinfo} = this.props;
         console.log("AHAHAH", games);
         if(games.length !== 0) {
             return true;
@@ -37,11 +40,9 @@ class GamesView extends Component {
     }
 
     render() {
-        const {propps} = this.props;
+        const {games, gameinfo} = this.props;
         console.log("trying to render games list");
-        console.log(typeof propps);
-        console.log(propps);
-        // console.log(this.state.games);
+        console.log(games);
 
         if(!this.shouldComponentRender()) {
             console.log("HE-HE");
@@ -50,14 +51,16 @@ class GamesView extends Component {
         return (
             <Container>
                 <Row>
-                    <div className='product-list-wrapper'>
-                        <GamesList games={propps.games} />
-                    </div>
-                </Row>
-                <Row>
-                    <div className='game-info-wrapper'>
-                        <GameInfo game_info={propps.game_info} />
-                    </div>
+                    <Col>
+                        <div className='product-list-wrapper'>
+                            <GamesList games={games} />
+                        </div>
+                    </Col>
+                    <Col>
+                        <div className='game-info-wrapper'>
+                            <GameInfo gameinfo={gameinfo ? gameinfo : null} />
+                        </div>
+                    </Col>
                 </Row>
             </Container>
         )
@@ -67,7 +70,8 @@ class GamesView extends Component {
 
 const mapStateToProps = state => ({
     // error: getGamesError(state),
-    games: state.games,
+    games: state.games.games,
+    gameinfo: state.games.gameinfo,
     // pending: getGamesPending(state)
 })
 
